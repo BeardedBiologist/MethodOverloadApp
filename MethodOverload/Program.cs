@@ -14,8 +14,8 @@ namespace MethodOverload
         {
             var person = new PersonModel("Tim", "Corey");
 
-            //person.GenerateEmail(true);
-            person.GenerateEmail("gmail.com", true);
+            person.GenerateEmail();
+            //person.GenerateEmail("gmail.com", true);
 
             Console.WriteLine(person.Email);
 
@@ -49,24 +49,17 @@ namespace MethodOverload
 
         public void GenerateEmail()
         {
-            Email = $"{FirstName}.{LastName}@aol.com";
+            GenerateEmail("aol.com", false);
         }
 
         public void GenerateEmail(string domain)
         {
-            Email = $"{ FirstName }.{ LastName }@{ domain }";
+            GenerateEmail(domain, false);
         }
 
         public void GenerateEmail(bool firstInitialMethod)
         {
-            if (firstInitialMethod == true)
-            {
-                Email = $"{FirstName.Substring(0, 1)}.{LastName}@aol.com";
-            }
-            else
-            {
-                Email = $"{FirstName}.{LastName}@aol.com";
-            }
+            GenerateEmail("aol.com", firstInitialMethod);
         }
 
         public void GenerateEmail(string domain, bool firstInitialMethod)
